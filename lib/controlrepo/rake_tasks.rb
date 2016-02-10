@@ -71,12 +71,6 @@ task :generate_nodesets do
     fixtures_template = File.read(File.expand_path('./nodeset.yaml.erb',template_dir))
     puts ERB.new(fixtures_template, nil, '-').result(binding)
 
-    task :controlrepo_autotest_serverspec do
-      Dir.chdir(@repo.tempdir) do
-        exec("bundle exec rake spec:#{node_name}")
-      end
-    end
-
   end
 
 end
@@ -166,7 +160,11 @@ task :controlrepo_serverspec => [
   :controlrepo_autotest_serverspec
   ]
 
-
+task :controlrepo_autotest_serverspec do
+  Dir.chdir(@repo.tempdir) do
+    exec("bundle exec rake spec:CentOS-6.6-64")
+  end
+end
 
 task :r10k_deploy_local do
   require 'controlrepo/testconfig'
