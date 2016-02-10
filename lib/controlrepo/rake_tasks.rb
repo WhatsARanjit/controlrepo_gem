@@ -89,6 +89,9 @@ task :controlrepo_autotest_prep do
   # Deploy r10k to a temp dir
   @config.r10k_deploy_local(@repo)
 
+  # Create the other directories we need
+  FileUtils.mkdir_p("#{@repo.tempdir}/spec")
+
   # Copy our nodesets over
   FileUtils.cp_r(@repo.spec_dir,@repo.tempdir)
 
