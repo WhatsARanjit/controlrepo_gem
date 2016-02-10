@@ -6,11 +6,11 @@ RSpec::Core::RakeTask.new(:acceptance) do |t|
   t.pattern = 'spec/acceptance'
 end
 
-require 'rake'
-require 'rspec/core/rake_task'
-
-task :serverspec => 'spec:all'
-task :default    => :serverspec
+#require 'rake'
+#require 'rspec/core/rake_task'
+#
+#task :serverspec => 'spec:all'
+#task :default    => :serverspec
 
 namespace :serverspec do
   targets = []
