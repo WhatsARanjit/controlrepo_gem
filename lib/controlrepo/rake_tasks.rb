@@ -144,6 +144,12 @@ task :controlrepo_autotest_acceptance do
   end
 end
 
+task :controlrepo_autotest_serverspec do
+  Dir.chdir(@repo.tempdir) do
+    exec("bundle exec rake spec:all")
+  end
+end
+
 task :controlrepo_spec => [
   :controlrepo_autotest_prep,
   :controlrepo_autotest_spec
@@ -152,6 +158,11 @@ task :controlrepo_spec => [
 task :controlrepo_acceptance => [
   :controlrepo_autotest_prep,
   :controlrepo_autotest_acceptance
+  ]
+
+task :controlrepo_serverspec => [
+  :controlrepo_autotest_prep,
+  :controlrepo_autotest_serverspec
   ]
 
 
