@@ -9,10 +9,10 @@ end
 require 'rake'
 require 'rspec/core/rake_task'
 
-task :spec    => 'spec:all'
-task :default => :spec
+task :serverspec => 'spec:all'
+task :default    => :serverspec
 
-namespace :spec do
+namespace :serverspec do
   targets = []
   Dir.glob('./spec/*').each do |dir|
     next unless File.directory?(dir)
