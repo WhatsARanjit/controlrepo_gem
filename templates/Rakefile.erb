@@ -6,13 +6,13 @@ RSpec::Core::RakeTask.new(:acceptance) do |t|
   t.pattern = 'spec/acceptance'
 end
 
-#require 'rake'
-#require 'rspec/core/rake_task'
-#
-#task :serverspec => 'spec:all'
-#task :default    => :serverspec
+require 'rake'
+require 'rspec/core/rake_task'
 
-namespace :serverspec do
+task :spec    => 'spec:all'
+task :default => :spec
+
+namespace :spec do
   targets = []
   Dir.glob('./spec/*').each do |dir|
     next unless File.directory?(dir)
