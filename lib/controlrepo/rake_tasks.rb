@@ -90,10 +90,11 @@ task :controlrepo_autotest_prep do
   @config.r10k_deploy_local(@repo)
 
   # Create the other directories we need
-  FileUtils.mkdir_p("#{@repo.tempdir}/spec")
+  FileUtils.mkdir_p("#{@repo.tempdir}/spec/classes")
+  FileUtils.mkdir_p("#{@repo.tempdir}/spec/acceptance/nodesets")
 
   # Copy our nodesets over
-  FileUtils.cp_r(@repo.spec_dir,@repo.tempdir)
+  FileUtils.cp_r("#{@repo.spec_dir}","#{@repo.tempdir}/spec")
 
   # Create the Rakefile so that we can take advantage of the existing tasks
   @config.write_rakefile(@repo.tempdir, "spec/classes/**/*_spec.rb")
