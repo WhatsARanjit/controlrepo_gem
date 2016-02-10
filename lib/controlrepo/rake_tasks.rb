@@ -94,7 +94,7 @@ task :controlrepo_autotest_prep do
   FileUtils.mkdir_p("#{@repo.tempdir}/spec/acceptance/nodesets")
 
   # Copy our nodesets over
-  FileUtils.cp_r("#{@repo.spec_dir}/acceptance/nodesets","#{@repo.tempdir}/spec/acceptance")
+  FileUtils.cp_r("#{@repo.spec_dir}/acceptance","#{@repo.tempdir}/spec")
 
   # Create the Rakefile so that we can take advantage of the existing tasks
   @config.write_rakefile(@repo.tempdir, "spec/classes/**/*_spec.rb")
